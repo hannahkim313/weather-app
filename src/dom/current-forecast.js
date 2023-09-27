@@ -2,13 +2,13 @@ import appendChildren from '../logic/helper-functions';
 
 const createCurrentForecast = () => {
   const city = document.createElement('h2');
-  city.textContent = 'Los Angeles'; // Change to fetched data
   const currentTemp = document.createElement('p');
-  currentTemp.textContent = '53°'; // Change to fetched data
-  const currentWeather = document.createElement('p');
-  currentWeather.textContent = 'Rainy'; // Change to fetched data
+  currentTemp.classList.add('current-temp');
+  const currentCondition = document.createElement('p');
+  currentCondition.classList.add('current-condition');
   const currentForecast = document.createElement('article');
-  appendChildren(currentForecast, city, currentTemp, currentWeather);
+  currentForecast.classList.add('current-forecast');
+  appendChildren(currentForecast, city, currentTemp, currentCondition);
 
   return currentForecast;
 };

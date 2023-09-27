@@ -14,7 +14,7 @@ const createHeader = () => {
   const heading = document.createElement('h1');
   heading.textContent = 'Weather Forecast';
   const searchLabel = document.createElement('label');
-  searchLabel.for = 'city-search';
+  searchLabel.setAttribute('for', 'city-search');
   searchLabel.textContent = 'Search for a city';
   const searchInput = document.createElement('input');
   searchInput.type = 'search';
