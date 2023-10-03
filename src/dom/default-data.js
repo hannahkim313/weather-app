@@ -1,4 +1,4 @@
-import { format } from 'date-fns';
+import { format, getMonth } from 'date-fns';
 import getData from '../logic/data-events';
 import appendChildren from '../logic/helper-functions';
 
@@ -18,7 +18,7 @@ const editCurrentForecast = () => {
 };
 
 const rearrangeForecasts = () => {
-  const currentHour = format(new Date(), `ha`);
+  const currentHour = format(new Date(), 'ha');
   const forecasts = Array.from(document.querySelectorAll('.hour-forecast'));
   const hours = forecasts.map(
     (forecast) => forecast.querySelector('h4').textContent
@@ -69,9 +69,34 @@ const editHourlyForecast = () => {
   currentForecastHour.textContent = 'Now';
 };
 
+const editMultiDayForecast = () => {
+  const daysData = data.forecastday;
+  const forecasts = document.querySelectorAll('.day-forecast');
+
+  forecasts.forEach((forecast, index) => {
+    const fullDate = daysData[index].date;
+    const year = Number(fullDate.slice(0, 4));
+    const monthIndex = Number(fullDate.slice(5, 7)) - 1;
+    const date = Number(fullDate.slice(-2));
+    const day = format(new Date(year, monthIndex, date), 'iii');
+    const heading = forecast.querySelector('h4');
+    heading.textContent = day;
+    const img = forecast.querySelector('img');
+    img.src = daysData[index].day.condition.icon;
+    img.alt = `${daysData[index].day.condition.text} icon`;
+    const lowTemp = forecast.querySelector('.low');
+    lowTemp.textContent = `Low: ${Math.round(daysData[index].day.mintemp_f)}°`;
+    const highTemp = forecast.querySelector('.high');
+    highTemp.textContent = `High: ${Math.round(
+      daysData[index].day.maxtemp_f
+    )}°`;
+  });
+};
+
 const addDefaultData = () => {
   editCurrentForecast();
   editHourlyForecast();
+  editMultiDayForecast();
 };
 
 export default addDefaultData;
