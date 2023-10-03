@@ -1,4 +1,4 @@
-import { format, getMonth } from 'date-fns';
+import { format } from 'date-fns';
 import getData from '../logic/data-events';
 import appendChildren from '../logic/helper-functions';
 
