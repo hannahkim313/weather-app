@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import getData from '../logic/data-events';
+import getData from '../logic/events/data-events';
 import appendChildren from '../logic/helper-functions';
 
 const data = await getData('seattle', {
