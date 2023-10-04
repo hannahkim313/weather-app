@@ -25,9 +25,12 @@ const createMultiDayForecast = () => {
     forecastNum -= 1;
   }
 
+  const forecastsContainer = document.createElement('div');
+  forecastsContainer.classList.add('forecasts');
+  appendChildren(forecastsContainer, ...forecasts);
   const multiDayForecast = document.createElement('article');
   multiDayForecast.classList.add('multi-day-forecast');
-  appendChildren(multiDayForecast, heading, ...forecasts);
+  appendChildren(multiDayForecast, heading, forecastsContainer);
 
   return multiDayForecast;
 };

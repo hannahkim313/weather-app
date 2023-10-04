@@ -22,9 +22,12 @@ const createHourlyForecast = () => {
     forecastNum -= 1;
   }
 
+  const forecastsContainer = document.createElement('div');
+  forecastsContainer.classList.add('forecasts');
+  appendChildren(forecastsContainer, ...forecasts);
   const hourlyForecast = document.createElement('article');
   hourlyForecast.classList.add('hourly-forecast');
-  appendChildren(hourlyForecast, heading, ...forecasts);
+  appendChildren(hourlyForecast, heading, forecastsContainer);
 
   return hourlyForecast;
 };

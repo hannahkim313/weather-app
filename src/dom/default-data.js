@@ -29,7 +29,7 @@ const rearrangeForecasts = () => {
   const rearranged = beginning.concat(end);
   const forecastElements = document.querySelectorAll('.hour-forecast');
   forecastElements.forEach((element) => element.remove());
-  const section = document.querySelector('.hourly-forecast');
+  const section = document.querySelector('.hourly-forecast .forecasts');
   appendChildren(section, ...rearranged);
 };
 
