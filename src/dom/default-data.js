@@ -12,7 +12,7 @@ const editCurrentForecast = () => {
   const city = document.querySelector('.current-forecast h2');
   city.textContent = data.name;
   const currentTemp = document.querySelector('.current-temp');
-  currentTemp.textContent = `${data.temp_f}°`;
+  currentTemp.textContent = `${Math.round(data.temp_f)}°`;
   const currentCondition = document.querySelector('.current-condition');
   currentCondition.textContent = data.condition.text;
 };
