@@ -29,6 +29,7 @@ const createOptions = () => {
   searchContainer.classList.add('search-container');
   appendChildren(searchContainer, searchLabel, searchInput, searchButton);
   const fahrenheitButton = document.createElement('button');
+  fahrenheitButton.classList.add('active');
   fahrenheitButton.textContent = '°F';
   fahrenheitButton.appendChild(
     createThermometerIcon('Click to set to Fahrenheit')
