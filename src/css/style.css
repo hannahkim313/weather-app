@@ -1,0 +1,278 @@
+/******************************************************************************/
+/* Selectors for general elements start here.
+/******************************************************************************/
+
+:root {
+  --color-text-1: #1c2e45;
+  --color-text-1-inverted: #f4f4f4;
+  --color-brand-1: #2f4c73;
+  --color-brand-1a: #4f80c0;
+  --color-brand-1b: #1c2e4517;
+  --color-brand-2: #518c81;
+  --color-brand-3: #f2ebc4;
+  --color-brand-4: #f2c063;
+  --color-brand-5: #bfa288;
+  --color-neutral-1: #e5e5e5;
+  --color-neutral-2: #d7d7d7;
+  --color-neutral-3: #cfcfcf;
+}
+
+body {
+  color: var(--color-text-1);
+  background-image: url('../img/background.jpg');
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+/******************************************************************************/
+/* Selectors for the header start here.
+/******************************************************************************/
+
+header {
+  color: white;
+  padding: 16px;
+  background-color: var(--color-text-1);
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+/******************************************************************************/
+/* Selectors for the main section start here.
+/******************************************************************************/
+
+main {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/******************************************************************************/
+/* Selectors for the options (search bar and temperature settings) start here.
+/******************************************************************************/
+
+.options {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.options .temp-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.options .temp-container button {
+  padding: 4px 12px;
+  background-color: var(--color-neutral-1);
+  border: 2px transparent;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.options .temp-container button:hover {
+  background-color: var(--color-neutral-2);
+}
+.options .temp-container button:active {
+  background-color: var(--color-neutral-3);
+}
+
+.options .temp-container .active {
+  border: 2px solid var(--color-text-1);
+}
+
+.options .search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.options .search-container .search {
+  padding: 4px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.options .search-container .search:hover {
+  background-color: var(--color-neutral-1);
+}
+
+.options .search-container .search:active {
+  background-color: var(--color-neutral-2);
+}
+
+/******************************************************************************/
+/* Selectors for the current forecast section start here.
+/******************************************************************************/
+
+.current-forecast {
+  width: 100%;
+  padding: 16px;
+  margin: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.current-forecast h2 {
+  font-size: 2rem;
+}
+
+.current-forecast .current-temp {
+  font-size: 1.5rem;
+}
+
+/******************************************************************************/
+/* Selectors for the hourly forecast section start here.
+/******************************************************************************/
+
+.hourly-forecast {
+  width: clamp(min(300px), 85vw, max(800px));
+  padding: 16px;
+  margin: 48px;
+  background-color: var(--color-brand-1b);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hourly-forecast h3 {
+  align-self: flex-start;
+}
+
+.hourly-forecast .forecasts {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  overflow-x: auto;
+}
+
+.hour-forecast {
+  width: 75px;
+  padding: 8px;
+  background-color: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.hour-forecast img {
+  width: 50px;
+}
+
+.hour-forecast p {
+  text-align: center;
+}
+
+/******************************************************************************/
+/* Selectors for the 3-day forecast section start here.
+/******************************************************************************/
+
+.multi-day-forecast {
+  width: clamp(min(300px), 85vw, max(800px));
+  padding: 16px;
+  margin: 48px;
+  background-color: var(--color-brand-1b);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.multi-day-forecast h3 {
+  align-self: flex-start;
+}
+
+.multi-day-forecast .forecasts {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.day-forecast {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.day-forecast h4 {
+  width: 3rem;
+  text-align: left;
+}
+
+/******************************************************************************/
+/* Selectors for the footer start here.
+/******************************************************************************/
+
+footer {
+  padding: 16px;
+  margin-top: 48px;
+  background-color: var(--color-text-1);
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
+
+footer a {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+footer img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/******************************************************************************/
+/* Media queries start here.
+/******************************************************************************/
+
+@media screen and (max-width: 575px) {
+  header {
+    text-align: center;
+  }
+
+  .options {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
