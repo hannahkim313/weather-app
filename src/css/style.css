@@ -49,6 +49,14 @@ header {
   background-color: var(--color-text-1);
   grid-column: 1 / 2;
   grid-row: 1 / 2;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+}
+
+header img {
+  width: 2.5rem;
 }
 
 /******************************************************************************/
@@ -268,7 +276,7 @@ footer img {
 
 @media screen and (max-width: 575px) {
   header {
-    text-align: center;
+    justify-content: center;
   }
 
   .options {
