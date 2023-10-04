@@ -4,9 +4,9 @@ const createIndividualForecast = () => {
   const day = document.createElement('h4');
   const conditionIcon = document.createElement('img');
   const lowTemp = document.createElement('p');
-  lowTemp.classList.add('low');
+  lowTemp.classList.add('convertible', 'low');
   const highTemp = document.createElement('p');
-  highTemp.classList.add('high');
+  highTemp.classList.add('convertible', 'high');
   const forecast = document.createElement('article');
   forecast.classList.add('day-forecast');
   appendChildren(forecast, day, conditionIcon, lowTemp, highTemp);

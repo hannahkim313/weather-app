@@ -3,7 +3,7 @@ import appendChildren from '../logic/helper-functions';
 const createCurrentForecast = () => {
   const city = document.createElement('h2');
   const currentTemp = document.createElement('p');
-  currentTemp.classList.add('current-temp');
+  currentTemp.classList.add('convertible', 'current-temp');
   const currentCondition = document.createElement('p');
   currentCondition.classList.add('current-condition');
   const currentForecast = document.createElement('article');

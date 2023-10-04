@@ -4,6 +4,7 @@ const createIndividualForecast = () => {
   const hour = document.createElement('h4');
   const conditionIcon = document.createElement('img');
   const temp = document.createElement('p');
+  temp.classList.add('convertible');
   const forecast = document.createElement('article');
   forecast.classList.add('hour-forecast');
   appendChildren(forecast, hour, conditionIcon, temp);
