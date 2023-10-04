@@ -61,7 +61,7 @@ const editHourlyForecast = () => {
     img.src = hourlyData[index].condition.icon;
     img.alt = `${hourlyData[index].condition.text} icon`;
     const text = forecast.querySelector('p');
-    text.textContent = Math.round(hourlyData[index].temp_f);
+    text.textContent = `${Math.round(hourlyData[index].temp_f)}°`;
   });
 
   rearrangeForecasts();
