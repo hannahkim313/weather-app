@@ -2,17 +2,41 @@ import { format } from 'date-fns';
 import getData from '../logic/events/data-events';
 import appendChildren from '../logic/helper-functions';
 
-const data = await getData('seattle', {
-  location: ['name'],
-  current: ['temp_f', 'condition'],
-  forecast: ['forecastday'],
-});
+const getCurrentScale = () => {
+  if (document.readyState === 'complete') {
+    return document.querySelector('.active').textContent;
+  }
 
-const editCurrentForecast = () => {
+  return undefined;
+};
+
+const fetchData = async (city) => {
+  const responseBodyNames = {
+    location: ['name'],
+    current: ['condition'],
+    forecast: ['forecastday'],
+  };
+
+  if (getCurrentScale() === '°F') {
+    responseBodyNames.current.unshift('temp_f');
+  } else {
+    responseBodyNames.current.unshift('temp_c');
+  }
+
+  return getData(city, responseBodyNames);
+};
+
+const editCurrentForecast = (data) => {
   const city = document.querySelector('.current-forecast h2');
   city.textContent = data.name;
   const currentTemp = document.querySelector('.current-temp');
-  currentTemp.textContent = `${Math.round(data.temp_f)}°`;
+
+  if (getCurrentScale() === '°F') {
+    currentTemp.textContent = `${Math.round(data.temp_f)}°`;
+  } else {
+    currentTemp.textContent = `${Math.round(data.temp_c)}°`;
+  }
+
   const currentCondition = document.querySelector('.current-condition');
   currentCondition.textContent = data.condition.text;
 };
@@ -50,7 +74,7 @@ const getStandardHour = (time) => {
   return isPM ? `${standardHour}PM` : `${standardHour}AM`;
 };
 
-const editHourlyForecast = () => {
+const editHourlyForecast = (data) => {
   const hourlyData = data.forecastday[0].hour;
   const forecasts = document.querySelectorAll('.hour-forecast');
 
@@ -61,7 +85,12 @@ const editHourlyForecast = () => {
     img.src = hourlyData[index].condition.icon;
     img.alt = `${hourlyData[index].condition.text} icon`;
     const text = forecast.querySelector('p');
-    text.textContent = `${Math.round(hourlyData[index].temp_f)}°`;
+
+    if (getCurrentScale() === '°F') {
+      text.textContent = `${Math.round(hourlyData[index].temp_f)}°`;
+    } else {
+      text.textContent = `${Math.round(hourlyData[index].temp_c)}°`;
+    }
   });
 
   rearrangeForecasts();
@@ -69,7 +98,7 @@ const editHourlyForecast = () => {
   currentForecastHour.textContent = 'Now';
 };
 
-const editMultiDayForecast = () => {
+const editMultiDayForecast = (data) => {
   const daysData = data.forecastday;
   const forecasts = document.querySelectorAll('.day-forecast');
 
@@ -85,18 +114,27 @@ const editMultiDayForecast = () => {
     img.src = daysData[index].day.condition.icon;
     img.alt = `${daysData[index].day.condition.text} icon`;
     const lowTemp = forecast.querySelector('.low');
-    lowTemp.textContent = `Low: ${Math.round(daysData[index].day.mintemp_f)}°`;
     const highTemp = forecast.querySelector('.high');
-    highTemp.textContent = `High: ${Math.round(
-      daysData[index].day.maxtemp_f
-    )}°`;
+
+    if (getCurrentScale() === '°F') {
+      const minTemp = Math.round(daysData[index].day.mintemp_f);
+      lowTemp.textContent = `Low: ${minTemp}°`;
+      const maxTemp = Math.round(daysData[index].day.maxtemp_f);
+      highTemp.textContent = `High: ${maxTemp}°`;
+    } else {
+      const minTemp = Math.round(daysData[index].day.mintemp_c);
+      lowTemp.textContent = `Low: ${minTemp}°`;
+      const maxTemp = Math.round(daysData[index].day.maxtemp_c);
+      highTemp.textContent = `High: ${maxTemp}°`;
+    }
   });
 };
 
-const addDefaultData = () => {
-  editCurrentForecast();
-  editHourlyForecast();
-  editMultiDayForecast();
+const populateData = async (city) => {
+  const data = await fetchData(city);
+  editCurrentForecast(data);
+  editHourlyForecast(data);
+  editMultiDayForecast(data);
 };
 
-export default addDefaultData;
+export default populateData;
