@@ -229,11 +229,16 @@ main {
 
 .multi-day-forecast .forecasts {
   width: 100%;
+  padding: 16px;
   display: flex;
   flex-direction: column;
+  gap: 16px;
 }
 
 .day-forecast {
+  padding: 0 16px;
+  background-color: white;
+  border-radius: 8px;
   text-align: center;
   display: flex;
   justify-content: space-between;
