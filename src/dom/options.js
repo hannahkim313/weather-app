@@ -18,6 +18,9 @@ const createOptions = () => {
   searchInput.type = 'search';
   searchInput.id = 'city-search';
   searchInput.name = 'city';
+  const inputContainer = document.createElement('div');
+  inputContainer.classList.add('input-container');
+  inputContainer.appendChild(searchInput);
   const searchIcon = document.createElement('img');
   searchIcon.src = searchImg;
   searchIcon.alt = 'Click to search for inputted city';
@@ -27,7 +30,7 @@ const createOptions = () => {
   searchButton.appendChild(searchIcon);
   const searchContainer = document.createElement('div');
   searchContainer.classList.add('search-container');
-  appendChildren(searchContainer, searchLabel, searchInput, searchButton);
+  appendChildren(searchContainer, searchLabel, inputContainer, searchButton);
   const fahrenheitButton = document.createElement('button');
   fahrenheitButton.classList.add('active');
   fahrenheitButton.textContent = '°F';

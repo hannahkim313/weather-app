@@ -10,7 +10,7 @@
   --color-brand-1b: #1c2e4517;
   --color-brand-2: #518c81;
   --color-brand-3: #f2ebc4;
-  --color-brand-4: #f2c063;
+  --color-brand-4: #f26363;
   --color-brand-5: #bfa288;
   --color-neutral-1: #e5e5e5;
   --color-neutral-2: #d7d7d7;
@@ -117,8 +117,17 @@ main {
 .options .search-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
+}
+
+.options .search-container input {
+  padding: 0 4px;
+}
+
+.options .search-container .input-container p {
+  font-size: 0.8rem;
+  color: var(--color-brand-4);
 }
 
 .options .search-container .search {
